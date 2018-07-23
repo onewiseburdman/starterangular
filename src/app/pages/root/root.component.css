@@ -1,0 +1,13 @@
+
+
+.container {
+    display: flex;
+   
+}
+.logout {
+    margin-left: auto;
+
+}
+.home{
+    margin-right: auto;
+}

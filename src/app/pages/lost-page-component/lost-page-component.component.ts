@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-lost-page-component',
+  selector: 'app-lost-page',
   templateUrl: './lost-page-component.component.html',
   styleUrls: ['./lost-page-component.component.css']
 })
-export class LostPageComponentComponent implements OnInit {
+export class LostPageComponent implements OnInit {
 
   constructor() { }
 
