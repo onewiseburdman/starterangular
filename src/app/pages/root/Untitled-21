@@ -1,0 +1,11 @@
+    this.contents$ = this.afs.collection('contents', ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          if (this.city) { query = query.where('city', '==', this.city) };
+          if (this.state) { query = query.where('state', '==', this.state) };
+          if (this.seat) { query = query.where('seat', '==', this.seat) };
+
+          return query;
+        }).valueChanges();
+      
+    console.log(this.root);
+    console.log(this.contents$)

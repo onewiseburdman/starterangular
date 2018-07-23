@@ -1,0 +1,19 @@
+<div [ngSwitch]="pageData?.length">
+    <div *ngSwitchCase="0">
+        {{pageData?.city}} 
+                
+    </div>
+    <div *ngSwitchCase="1">
+            {{pageData?.city}}
+            
+    </div>
+ 
+    <div *ngSwitchDefault>
+            <li *ngFor="let data of pageData">
+                    {{data.city}}
+            </li>
+    </div>
+</div>
+
+{{pageData | json}}
+
