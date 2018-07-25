@@ -1,12 +1,13 @@
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { RootService } from '../../services/root.service';
 import { LocationService } from '../../services/location.service';
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Root } from './../../interfaces/routevariables';
+import { Root, Child } from './../../interfaces/routevariables';
 
-import { Observable, of, combineLatest } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { of, combineLatest } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -14,68 +15,57 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./root.component.css']
 })
 
-
-
 export class RootComponent implements OnInit {
-  queryString: string;
   pageData: any;
   locations$;
-  seat$;
-  city$;
-  state$;
+  contentdisplay$;
 
-  root: Root = {
-    rootname: this.path.path$
-  };
+  route0$;
+  route1$;
+  route2$;
+
+  routes;
 
   constructor(
     private path: LocationService,
-    private afs:AngularFirestore,
+    private afs: AngularFirestore,
     private rootservice: RootService,
-    private route: ActivatedRoute
-    
-  ) { 
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.route.params.subscribe(params => {
-     
+     console.log(params);
+     this.route0$ = params['parent'];
+     this.route1$ = params['child'];
+     this.route2$ = params['grandchild'];
+     console.log(this.route0$);
     });
-    
   }
 
   ngOnInit() {
-    this.queryString = this.path.path$;
-    this.getLocation(this.queryString);
-  }
-
-  getLocation(query: string) {
-    const cityRef = this.afs.collection('contents', ref => 
-      ref.where('city', '==', `${query}`)
+    this.routes = this.afs.collection('contents', ref => {
+      let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      if (this.route0$) {
+        query = query.where(`${this.route0$}`, '==', true);
+      }
+      if (this.route1$) {
+        query = query.where(`${this.route1$}`, '==', true);
+      }
+      if (this.route2$) {
+        query = query.where(`${this.route2$}`, '==', true);
+      }
+      return query;
+    }).snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
     );
-    const stateRef = this.afs.collection('contents', ref => 
-      ref.where('state', '==', `${query}`)
-    );
-    const seatRef = this.afs.collection('contents', ref => 
-      ref.where('seat', '==', `${query}`)
-    );
-
-    this.locations$ = combineLatest(
-        cityRef.valueChanges(),
-        stateRef.valueChanges(),
-        seatRef.valueChanges()
-    ).pipe(switchMap(data => {
-      const [city, state, seat] = data;
-      const combined = city.concat(state, seat);
-      return of(combined);
-    }));
-
-    this.locations$.subscribe(data => {
-      this.pageData = data;
+    this.routes.subscribe(data => {
+      console.log(data);
     });
   }
-
-
-ngOnDestroy(){
-  this.rootservice.root = this.root;
-
-}
-
 }
