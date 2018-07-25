@@ -1,7 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { RootService } from '../../services/root.service';
-import { LocationService } from '../../services/location.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Root, Child } from './../../interfaces/routevariables';
@@ -27,9 +25,7 @@ export class RootComponent implements OnInit {
   routes;
 
   constructor(
-    private path: LocationService,
     private afs: AngularFirestore,
-    private rootservice: RootService,
     private route: ActivatedRoute,
     private router: Router
   ) {
