@@ -57,7 +57,7 @@ export class RootComponent implements OnInit {
     );
     this.routes.subscribe(data => {
       this.pageData = data;
-      console.log(this.pageData.layout)
+      console.log(this.pageData)
     });
   }
 }
