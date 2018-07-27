@@ -2,10 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Root, Child } from './../../interfaces/routevariables';
-
-import { of, combineLatest } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +13,6 @@ import { switchMap, map } from 'rxjs/operators';
 
 export class RootComponent implements OnInit {
   pageData: any;
-  locations$;
-  contentdisplay$;
-
   route0$;
   route1$;
   route2$;
@@ -27,7 +22,7 @@ export class RootComponent implements OnInit {
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
-    private router: Router
+    private sanitizer: DomSanitizer
   ) {
     this.route.params.subscribe(params => {
      console.log(params);
@@ -61,7 +56,13 @@ export class RootComponent implements OnInit {
       })
     );
     this.routes.subscribe(data => {
-      console.log(data);
+      this.pageData = data;
+      console.log(this.pageData);
     });
   }
+
+  public sanitizedHtml(value) {
+    return this.sanitizer.bypassSecurityTrustHtml(value);
+  }
 }
+
