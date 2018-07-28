@@ -49,6 +49,7 @@ export class RootComponent implements OnInit {
   getTemplate() {
     this.layout.loadLayout().subscribe(data => {
       this.pageLayout = data[0];
+      console.log(this.pageLayout);
     });
   }
 

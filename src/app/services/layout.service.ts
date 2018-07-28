@@ -12,18 +12,21 @@ export class LayoutService {
   layouts: Observable<any>;
   finalData: Observable<any>;
   contentData: any;
+  subject = new BehaviorSubject<string>('default');
 
   constructor(public afs: AngularFirestore, private content: ContentService) {
+    this.content.loadContent().subscribe(data => {
+      this.contentData = data[0];
+      this.subject.next(data[0].layoutname);
+    });
   }
 
   loadLayout() {
-    this.content.loadContent().subscribe(data => {
-      this.contentData = data[0];
-      this.layoutCollection = this.afs.collection('layouts', ref => {
-        ref.where('layoutname', '==', `${this.contentData.layoutname}`);
-        return ref;
-      });
-      this.layouts = this.layoutCollection.valueChanges();
+    this.layoutCollection = this.afs.collection('layouts', ref => {
+      ref.where('layoutname', '==', `${this.subject}`);
+      return ref;
     });
+    this.layouts = this.layoutCollection.valueChanges();
+    return this.layouts;
   }
 }
