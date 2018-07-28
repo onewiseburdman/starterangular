@@ -1,9 +1,11 @@
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { ContentService } from '../../services/content.service';
+import { LayoutService } from '../../services/layout.service';
+
 import { map } from 'rxjs/operators';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -13,51 +15,40 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 
 export class RootComponent implements OnInit {
   pageData: any;
-  route0$;
-  route1$;
-  route2$;
-
-  routes;
+  pageLayout: any;
+  route0$: any;
+  route1$: any;
+  route2$: any;
 
   constructor(
-    private afs: AngularFirestore,
-    private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private content: ContentService,
+    private layout: LayoutService,
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => {
-     console.log(params);
-     this.route0$ = params['parent'];
-     this.route1$ = params['child'];
-     this.route2$ = params['grandchild'];
-     console.log(this.route0$);
+      console.log(params);
+      this.route0$ = params['parent'];
+      this.route1$ = params['child'];
+      this.route2$ = params['grandchild'];
     });
   }
 
   ngOnInit() {
-    this.routes = this.afs.collection('contents', ref => {
-      let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-      if (this.route0$) {
-        query = query.where(`${this.route0$}`, '==', true);
-      }
-      if (this.route1$) {
-        query = query.where(`${this.route1$}`, '==', true);
-      }
-      if (this.route2$) {
-        query = query.where(`${this.route2$}`, '==', true);
-      }
-      return query;
-    }).snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
-    this.routes.subscribe(data => {
+    this.getContent();
+    this.getTemplate();
+  }
+
+  getContent() {
+    this.content.loadContent().subscribe(data => {
       this.pageData = data;
       console.log(this.pageData);
+    });
+  }
+
+  getTemplate() {
+    this.layout.loadLayout().subscribe(data => {
+      this.pageLayout = data[0];
     });
   }
 
