@@ -1,0 +1,37 @@
+
+      <div class="height-100 center" id="content">
+        <!-- <div>
+          <div class="searchoutside"><div class="searchborder"> 
+            <div><h1 class="homemiddleword"><b>Let's Find <u>Your Candidates</u></b></h1></div>
+            <div>
+              <ng-container>
+
+               
+                 <form >
+           <div> <input type="text" placeholder="CITY" class="searchinside "/>
+            <select class='select-option' required [(ngModel)]='optionSelected' (ngModelChange)='onOptionsSelected($event)'>
+             <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
+         </select></div>
+         </form> 
+           </ng-container>
+           </div>
+           </div>
+           </div>
+          <b class="texto">WhoIsRunningFor Where anyone can be your next elected official.</b><br/>
+        
+        </div> -->
+
+     
+  <div *ngFor="let doc of joined | async">
+
+    <h3>{{ doc.name }}</h3>
+  
+    <div *ngFor="let item of doc | keyvalue">
+        {{ item.key }}: {{ item.value | json }}
+    </div>
+  
+    <hr>
+  </div>
+      
+      
+      </div>

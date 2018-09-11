@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map, filter  } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +12,13 @@ export class ContentService {
   route0$: any;
   route1$: any;
   route2$: any;
-
   routes: Observable<any>;
-
+  contents;
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))

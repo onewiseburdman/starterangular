@@ -1,0 +1,47 @@
+
+      <div class="flex-grid">
+          <div class="col"></div>
+          <div class="col" style="padding-top: 50px;">
+            
+            </div>
+          <div class="col"></div>
+        </div>
+        <div class="flex-grid">
+            <div class="col"></div>
+            <div class="col middleword"></div>
+            <div class="col"></div>
+          </div>
+          <div class="flex-grid">
+              <div class="col"></div>
+              <div class="col ">
+              
+                <div [ngSwitch]="data?.length">
+                  <div *ngSwitchCase="0">not found</div>
+                  <div *ngSwitchCase="1">
+                  <p>  1 match</p>
+                  </div>
+                  
+                  <div *ngSwitchDefault>
+                     2 match
+                  </div>
+            
+                
+              </div>
+
+              <div class="col"></div>
+            </div>
+            <div class="flex-grid">
+                <div class="col"></div>
+                <div class="col"> 
+                </div>
+                <div class="col"></div>
+              </div>
+        <div class="flex-grid">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+          </div>
+          <div class="flex-grid">
+            <div class="col"></div>
+          </div>
