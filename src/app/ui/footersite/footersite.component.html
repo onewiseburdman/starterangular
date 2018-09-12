@@ -1,18 +1,7 @@
 <div class="height-10">
-        <div class="begin"></div>
-        <div class="center"></div>
-        <div class="end"><a>
-            <i-github style="fill: rgb(248,68,96)"></i-github></a>
-           
-            <a><i-facebook style="fill: rgb(248,68,96)"></i-facebook></a>
-          
-            <a><i-twitter style="fill: rgb(248,68,96)"></i-twitter></a>
-            
-            <a ><i-linkedin style="fill: rgb(248,68,96)"></i-linkedin></a>
-         
-            <a ><i-video style="fill: rgb(248,68,96)"></i-video></a>
-           
-            <a ><i-plus-circle style="fill: rgb(248,68,96)"></i-plus-circle></a>
-        </div>
-
+    <div class="begin"></div>
+    <div class="center"></div>
+    <div class="end">
+        <footericons [icons]="data.organizations[0]?.social"></footericons>
+    </div>
 </div>

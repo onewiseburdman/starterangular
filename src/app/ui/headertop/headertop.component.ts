@@ -9,7 +9,6 @@ export class headertopComponent implements OnInit {
   @Input() data: string;
     
     ngOnInit() {
-   console.log(this.data)
 
     }
 }

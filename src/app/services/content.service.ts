@@ -12,6 +12,7 @@ export class ContentService {
   route0$: any;
   route1$: any;
   route2$: any;
+  realm: any;
   routes: Observable<any>;
   contents;
   constructor(
@@ -36,7 +37,7 @@ export class ContentService {
   }
 
   loadContent() {
-    this.routes = this.afs.collection('contents', ref => {
+    this.routes = this.afs.collection('organizations', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
       if (this.route0$) {
         query = query.where(`${this.route0$}`, '==', true);

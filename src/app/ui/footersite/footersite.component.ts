@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./footersite.component.css']
 })
 export class footersiteComponent implements OnInit { 
-    @Input() footer: string;
+    
+    @Input() data: string;
+    
     ngOnInit() {
    
     }

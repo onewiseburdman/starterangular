@@ -1,37 +1,16 @@
+<ng-container *ngFor="let style of styles">
+<body [style.font-family]="style.font-family" >
+  <div [style.background] class="page-background">
+  <div [ngSwitch]='route0$'>
+    <!-- <div *ngSwitchCase="'home'"><rootcontainer [data]="pageData"></rootcontainer></div> -->
+    <div *ngSwitchCase="'home'">home</div>
 
-
-<div [@sideInOut]="sideNav" class="sidenav">
-    sidenav
- </div>
-<div [@slideInOut]="animationState" class="nav">
-  <div class="height"> <div>
-    <input placeholder="username" class="heightlogin">&nbsp;<input placeholder="password" class="heightlogin">&nbsp;<button>Submit</button>
-    <div class="iconclose"> <a (click)="toggleShowDiv('divA')" ><i-x ></i-x></a></div>
-  </div>
-  </div>
-   
+    <div *ngSwitchCase="'events'"><app-events></app-events></div>
+    <div *ngSwitchCase="'admin'"><app-admin></app-admin></div>
+    <div *ngSwitchCase="'checkout'">checkout</div>
+    <div *ngSwitchCase="'register'"><app-register></app-register></div>
+     <div *ngSwitchDefault><innercontainer [data]="pageData"></innercontainer></div>
 </div>
-<div  [ngClass]="status ? 'sidenavopen' : 'sidenavclosed'">
-    <leftnav></leftnav>
-    <ng-container *ngFor="let doc of joined | async; index as i;">
-      <headertop [data]="doc"></headertop>
-    </ng-container>
-  <div class="wrapper container">
-
-<div [ngSwitch]='route0$'>
-        <!-- <div *ngSwitchCase="'home'"><rootcontainer [data]="pageData"></rootcontainer></div> -->
-        <div *ngSwitchCase="'home'"><rootcontainer></rootcontainer></div>
-
-        <div *ngSwitchCase="'events'"><app-events></app-events></div>
-        <div *ngSwitchCase="'admin'"><app-admin></app-admin></div>
-        <div *ngSwitchCase="'checkout'">checkout</div>
-        <div *ngSwitchCase="'register'"><app-register></app-register></div>
-         <div *ngSwitchDefault><innercontainer [data]="pageData"></innercontainer></div>
 </div>
-
-
-<footersite></footersite>
-</div>
-  </div>
-
-  
+</body>
+</ng-container>

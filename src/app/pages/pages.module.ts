@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { headertitleComponent } from '../ui/headertitle/headertitle.component';
 import { naviconsComponent} from '../ui/navicons/navicons.component';
 import { headertopComponent } from '../ui/headertop/headertop.component';
+import { footericonsComponent } from '../ui/footericons/footericons.component';
 import { footersiteComponent } from './../ui/footersite/footersite.component';
 import { SlideInOutAnimation } from './../animations/slideinout';
 import { leftnavComponent } from './../ui/leftnav/lefnav.component';
@@ -31,6 +32,7 @@ import { leftnavComponent } from './../ui/leftnav/lefnav.component';
     AdminComponent,
     EventsComponent,
     InnercontainerComponent,
+    footericonsComponent,
     footersiteComponent,
     headertopComponent,
     headertitleComponent,

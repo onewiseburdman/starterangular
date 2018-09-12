@@ -35,9 +35,12 @@ export class RootComponent implements OnInit {
     private afs: AngularFirestore
   ) {
     this.realm = document.location.hostname;
+    
     this.joined = this.afs.collection('organizations', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-      query = query.where('orgdomain', '==', this.realm)
+      
+      query = query.where('orgdomain', '==', this.realm);
+
       return query;
     })
     .valueChanges()

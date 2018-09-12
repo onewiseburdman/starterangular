@@ -1,3 +1,26 @@
-<ng-container *ngFor="let icon of organizations.social">
-    <a *ngIf="icon.published" [innerHTML]="sanitizedHtml(icon.name)" [attr.href]="icon.href" class="icon"></a>
+<ng-container *ngFor="let icon of icons">
+    <a *ngIf="icon.github" [attr.href]="icon.githublink">
+        <i-github [style.fill]="icon.fillcolor">
+        </i-github>
+    </a>
+    <a *ngIf="icon.twitter" [attr.href]="icon.twitterlink" >
+        <i-twitter [style.fill]="icon.fillcolor">
+        </i-twitter>
+    </a>
+    <a *ngIf="icon.linkedin" [attr.href]="icon.linkedinlink" >
+        <i-linkedin [style.fill]="icon.fillcolor">
+        </i-linkedin>
+    </a>
+    <a *ngIf="icon.facebook" [attr.href]="icon.facebooklink" >
+            <i-facebook [style.fill]="icon.fillcolor">
+            </i-facebook>
+        </a>
+    <a *ngIf="icon.youtube" [attr.href]="icon.youtubelink" >
+        <i-video [style.fill]="icon.fillcolor">
+        </i-video>
+    </a>
+    <a *ngIf="icon.googleplus" [attr.href]="icon.googlepluslink" >
+        <i-plus-circle [style.fill]="icon.fillcolor">
+        </i-plus-circle>
+    </a>    
 </ng-container>

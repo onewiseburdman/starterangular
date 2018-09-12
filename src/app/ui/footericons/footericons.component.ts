@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'navicons',
-  templateUrl: './navicons.component.html',
-  styleUrls: ['./navicons.component.css']
+  selector: 'footericons',
+  templateUrl: './footericons.component.html',
+  styleUrls: ['./footericons.component.css']
 })
-export class naviconsComponent implements OnInit {
+export class footericonsComponent implements OnInit {
     @Input() icons: any;
     constructor(private sanitizer: DomSanitizer) {
     }
