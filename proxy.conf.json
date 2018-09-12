@@ -1,0 +1,8 @@
+{
+  "https://fts.cardconnect.com:6443/cardconnect/rest/": {
+    "target": "https://fts.cardconnect.com:6443/cardconnect/rest/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
