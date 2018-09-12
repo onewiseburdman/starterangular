@@ -90,20 +90,6 @@ export class RootComponent implements OnInit {
     ).subscribe((data) => {
       console.log(data);
     });
-
-    // this.joined2 = this.afs.collection('templates', ref => {
-    //   let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-    //   query = query.where('templatesname', '==', this.templatename.value);
-    //   return query;
-    // })
-    // .valueChanges()
-    // .pipe(
-    //   leftJoin(this.afs, 'templatename', 'templates'),
-    //   shareReplay(1)
-    // )
-    // .subscribe((data) => {
-    //   console.log(this.templatename.value);
-    // });
   }
 
   ngOnInit() {
