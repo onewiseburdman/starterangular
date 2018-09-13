@@ -3,19 +3,17 @@
  
 <fontimporter [styles]="styles"></fontimporter>
 <dynamicbackground [styles]="styles"></dynamicbackground>
-    
-<div  class="page-background">
+<div class="page-background">
     <div [ngSwitch]='route0$'>
       <!-- <div *ngSwitchCase="'home'"><rootcontainer [data]="pageData"></rootcontainer></div> -->
       <div *ngSwitchCase="'home'">home</div>
-  
       <div *ngSwitchCase="'events'"><app-events></app-events></div>
       <div *ngSwitchCase="'admin'"><app-admin></app-admin></div>a
       <div *ngSwitchCase="'checkout'">checkout</div>
       <div *ngSwitchCase="'register'"><app-register></app-register></div>
-       <div *ngSwitchDefault><innercontainer [data]="pageData"></innercontainer></div>
+      <div *ngSwitchDefault><innercontainer [data]="pageData"></innercontainer></div>
   </div>
-  </div>
+</div>
 
 
   
