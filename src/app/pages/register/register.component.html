@@ -1,5 +1,5 @@
-
-    <ng-container *ngFor="let style of styles">
-        <div [ngStyle]="setMyStyles()" *ngIf="style.fontfamily!=undefined">
-          A</div>
-    </ng-container> 
+<ng-container *ngFor="let style of styles">
+    <div [ngStyle]="setMyStyles(style)" *ngIf="style.fontfamily!=undefined">
+      A
+    </div>
+</ng-container> 

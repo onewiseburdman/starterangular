@@ -6,16 +6,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Input() styles: string;
+  @Input() styles: any;
   fontfamily: any;
   constructor() { }
 
   ngOnInit() {
-    
+    console.log(this.styles);
   }
-  setMyStyles() {
-    let fontfamily = {
-      'font-family': this.fontfamily
+  setMyStyles(value) {
+    const fontfamily = {
+      'font-family': value.fontfamily
     };
     return fontfamily;
   }
