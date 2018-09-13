@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { RootcontainerComponent } from '../ui/rootcontainer/rootcontainer.component';
 import { TypewriterheaderComponent } from './../ui/typewriterheader/typewriterheader.component';
 import { InnercontainerComponent } from '../ui/innercontainer/innercontainer.component';
+import { fontimporterComponent } from './../ui/fontimporter/fontimporter.compontent';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { headertitleComponent } from '../ui/headertitle/headertitle.component';
 import { naviconsComponent} from '../ui/navicons/navicons.component';
@@ -19,7 +20,7 @@ import { footericonsComponent } from '../ui/footericons/footericons.component';
 import { footersiteComponent } from './../ui/footersite/footersite.component';
 import { SlideInOutAnimation } from './../animations/slideinout';
 import { leftnavComponent } from './../ui/leftnav/lefnav.component';
-
+import {dynamicbackgroundComponent} from './../ui/dynamicbackground/dynamicbackground.component';
 
 @NgModule({
   imports: [
@@ -30,8 +31,10 @@ import { leftnavComponent } from './../ui/leftnav/lefnav.component';
   ],
   declarations: [
     AdminComponent,
+    dynamicbackgroundComponent,
     EventsComponent,
     InnercontainerComponent,
+    fontimporterComponent,
     footericonsComponent,
     footersiteComponent,
     headertopComponent,
@@ -46,6 +49,7 @@ import { leftnavComponent } from './../ui/leftnav/lefnav.component';
   ],
   
   exports:[
+    fontimporterComponent,
     InnercontainerComponent,
     RootcontainerComponent,
     TypewriterheaderComponent,

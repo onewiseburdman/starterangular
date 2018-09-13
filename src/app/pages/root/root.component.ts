@@ -16,19 +16,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class RootComponent implements OnInit {
-  @Input () data: any;
   status: boolean = false;
   animationState = 'out';
   openedBool: boolean = false;
-  collapse:string = "closed";
+  collapse: string = "closed";
   sideNav= 'out';
   pageData: any;
   route0$: any;
   route1$: any;
   route2$: any;
   joined;
-  joined2;
   realm;
+  styles;
   templatename = new BehaviorSubject<any>('default');
 
   constructor(
@@ -38,7 +37,6 @@ export class RootComponent implements OnInit {
     private afs: AngularFirestore
   ) {
     this.realm = document.location.hostname;
-
     this.route.params.subscribe(params => {
       this.route0$ = params['parent'];
       this.route1$ = params['child'];
@@ -88,7 +86,7 @@ export class RootComponent implements OnInit {
       leftJoin(this.afs, 'templatename', 'templates'),
       shareReplay(1)
     ).subscribe((data) => {
-      console.log(data);
+      this.styles = data[0].templates[0].styles;
     });
   }
 
