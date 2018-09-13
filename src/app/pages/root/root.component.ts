@@ -78,7 +78,6 @@ export class RootComponent implements OnInit {
     this.joined = this.afs.collection('organizations', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
       query = query.where('orgdomain', '==', this.realm);
-      query = query.where('templatename', '==', this.templatename.value);
       return query;
     })
     .valueChanges()
@@ -86,6 +85,7 @@ export class RootComponent implements OnInit {
       leftJoin(this.afs, 'templatename', 'templates'),
       shareReplay(1)
     ).subscribe((data) => {
+      console.log(data);
       this.styles = data[0].templates[0].styles;
     });
   }
