@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./basepagemenu.component.css']
   })
   export class basepagemenuComponent extends basepageComponent {
-    @Input() data: any;
+    @Input() pageData: any;
   
   
    

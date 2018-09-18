@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
     templateUrl: './basepagelayout.component.html'
   })
   export class basepagelayoutComponent {
-    @Input() data: any;
+    @Input() pageData: any;
 
   }
 
