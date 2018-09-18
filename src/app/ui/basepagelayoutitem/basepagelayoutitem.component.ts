@@ -8,20 +8,20 @@ import { Component, OnInit, Input, ComponentFactoryResolver, ViewChild, ViewCont
     templateUrl: './basepagelayoutitem.component.html'
   })
   export class basepagelayoutitemComponent {
-    @Input() data: any;
+    @Input() pageData: any;
     @ViewChild('container', {read: ViewContainerRef}) private container: ViewContainerRef;
     readonly templateMapper = {
         basepagemenu: basepagemenuComponent
       };
     constructor(private componentFactoryResolver: ComponentFactoryResolver){}
     ngOnInit() {
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.getComponentForElementType(this.data.elementType));
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.getComponentForElementType(this.pageData.templatename));
         const viewContainerRef = this.container;
         viewContainerRef.clear();
         const componentRef = viewContainerRef.createComponent(componentFactory);
-        (<basepageComponent>componentRef.instance).data = this.data;
+        (<basepageComponent>componentRef.instance).pageData = this.pageData;
       }
-      private getComponentForElementType(elementType) {
-        return this.templateMapper[elementType];
+      private getComponentForElementType(templatename) {
+        return this.templateMapper[templatename];
       }
   }

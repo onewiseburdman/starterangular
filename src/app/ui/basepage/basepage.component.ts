@@ -5,6 +5,6 @@ import { Component, Input } from '@angular/core';
     template: '',
   })
   export class basepageComponent {
-    @Input() data: any;
+    @Input() pageData: any;
 
   }
