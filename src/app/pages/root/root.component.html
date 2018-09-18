@@ -1,10 +1,10 @@
-<fontimporter [styles]="styles"></fontimporter>
-<dynamicbackground [styles]="styles"></dynamicbackground>
-
+<fontimporter [fonts]="fonts"></fontimporter>
+<cssimporter [styles]="styles"></cssimporter>
 <div class="page-background">
     <div [ngSwitch]='route0$'>
       <!-- <div *ngSwitchCase="'home'"><rootcontainer [data]="pageData"></rootcontainer></div> -->
-      <div *ngSwitchCase="'home'"><app-register [styles]="styles"></app-register></div>
+      <rootcontainer [data]="pageData"></rootcontainer>
+      </div>
       <div *ngSwitchCase="'events'"><app-events></app-events></div>
       <div *ngSwitchCase="'admin'"><app-admin></app-admin></div>
       <div *ngSwitchCase="'checkout'">checkout</div>

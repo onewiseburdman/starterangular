@@ -1,6 +1,7 @@
+import { PositionDirective } from './../../directives/position.directive';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { leftJoin } from './../../services/collectionJoin';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ContentService } from '../../services/content.service';
@@ -28,8 +29,11 @@ export class RootComponent implements OnInit {
   joined;
   realm;
   styles;
+  css;
+  layouts;
+  fonts;
   templatename = new BehaviorSubject<any>('default');
-
+  templateposition = new BehaviorSubject<any>('position');
   constructor(
     private content: ContentService,
     private sanitizer: DomSanitizer,
@@ -68,6 +72,7 @@ export class RootComponent implements OnInit {
     this.content.loadContent().subscribe(data => {
       this.pageData = data;
       this.templatename.next(this.pageData[0].templatename);
+      this.templateposition.next(this.pageData[0].templateposition);
     });
   }
   public sanitizedHtml(value) {
@@ -85,9 +90,10 @@ export class RootComponent implements OnInit {
       leftJoin(this.afs, 'templatename', 'templates'),
       shareReplay(1)
     ).subscribe((data) => {
-      console.log(data);
       this.styles = data[0].templates[0].styles;
+      this.fonts = data[0].templates[0].fonts;
     });
+   
   }
 
   ngOnInit() {
@@ -96,4 +102,8 @@ export class RootComponent implements OnInit {
   }
  
 }
+
+
+
+
 
