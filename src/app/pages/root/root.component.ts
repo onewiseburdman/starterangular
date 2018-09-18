@@ -22,18 +22,18 @@ export class RootComponent implements OnInit {
   openedBool: boolean = false;
   collapse: string = "closed";
   sideNav= 'out';
-  pageData: any;
+  // pageData: any;
   route0$: any;
   route1$: any;
   route2$: any;
   joined;
   realm;
-  styles;
-  css;
-  layouts;
-  fonts;
-  templatename = new BehaviorSubject<any>('default');
-  templateposition = new BehaviorSubject<any>('position');
+  // styles;
+  // css;
+  // layouts;
+  // fonts;
+  // templatename = new BehaviorSubject<any>('default');
+  // templateposition = new BehaviorSubject<any>('position');
   constructor(
     private content: ContentService,
     private sanitizer: DomSanitizer,
@@ -70,9 +70,10 @@ export class RootComponent implements OnInit {
   }
   getContent() {
     this.content.loadContent().subscribe(data => {
-      this.pageData = data;
-      this.templatename.next(this.pageData[0].templatename);
-      this.templateposition.next(this.pageData[0].templateposition);
+     data[0]
+      // this.pageData = data;
+      // this.templatename.next(this.pageData[0].templatename);
+      // this.templateposition.next(this.pageData[0].templateposition);
     });
   }
   public sanitizedHtml(value) {
@@ -90,9 +91,10 @@ export class RootComponent implements OnInit {
       leftJoin(this.afs, 'templatename', 'templates'),
       shareReplay(1)
     ).subscribe((data) => {
-      this.styles = data[0].templates[0].styles;
-      this.fonts = data[0].templates[0].fonts;
-      this.layouts = data[0].templates[0].layouts;
+      data[0]
+      // this.styles = data[0].templates[0].styles;
+      // this.fonts = data[0].templates[0].fonts;
+      // this.layouts = data[0].templates[0].layouts;
     });
    
   }

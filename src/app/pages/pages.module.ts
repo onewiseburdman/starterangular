@@ -1,3 +1,6 @@
+import { basepagemenuComponent } from './../ui/basepagemenu/basepagemenu.component';
+import { basepagelayoutitemComponent } from './../ui/basepagelayoutitem/basepagelayoutitem.component';
+import { basepagelayoutComponent } from './../ui/basepagelayout/basepagelayout.component';
 import { cssimporterComponent } from './../ui/cssimporter/cssimporter.component';
 import { IconsModule } from './../ui/icons/icons.module';
 import { NgModule } from '@angular/core';
@@ -38,6 +41,9 @@ import {dynamicbackgroundComponent} from './../ui/dynamicbackground/dynamicbackg
   declarations: [
     AdminComponent,
     basepageComponent,
+    basepagelayoutComponent,
+    basepagelayoutitemComponent,
+    basepagemenuComponent,
     cssimporterComponent,
     dynamicbackgroundComponent,
     EventsComponent,
@@ -65,6 +71,8 @@ import {dynamicbackgroundComponent} from './../ui/dynamicbackground/dynamicbackg
     TypewriterheaderComponent,
     headertopComponent,
     headertitleComponent 
-  ]
+  ],
+  entryComponents: [ basepagemenuComponent],
+
 })
 export class PagesModule { }
