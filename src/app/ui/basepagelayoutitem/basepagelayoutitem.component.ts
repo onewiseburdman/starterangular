@@ -21,7 +21,7 @@ import { Component, OnInit, Input, ComponentFactoryResolver, ViewChild, ViewCont
         const componentRef = viewContainerRef.createComponent(componentFactory);
         (<basepageComponent>componentRef.instance).data = this.data;
       }
-      private getComponentForCardType(cardType) {
-        return this.templateMapper[cardType];
+      private getComponentForPageType(elementType) {
+        return this.templateMapper[elementType];
       }
   }
