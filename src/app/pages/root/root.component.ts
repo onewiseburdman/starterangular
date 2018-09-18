@@ -92,6 +92,7 @@ export class RootComponent implements OnInit {
     ).subscribe((data) => {
       this.styles = data[0].templates[0].styles;
       this.fonts = data[0].templates[0].fonts;
+      this.layouts = data[0].templates[0].layouts;
     });
    
   }

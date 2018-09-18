@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./rootcontainer.component.css']
 })
 export class RootcontainerComponent implements OnInit {
- @Input() joined: any;
+ @Input() layouts: any;
   ngOnInit() {
    
 

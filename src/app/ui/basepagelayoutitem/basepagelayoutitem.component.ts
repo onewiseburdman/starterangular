@@ -15,13 +15,13 @@ import { Component, OnInit, Input, ComponentFactoryResolver, ViewChild, ViewCont
       };
     constructor(private componentFactoryResolver: ComponentFactoryResolver){}
     ngOnInit() {
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.getComponentForCardType(this.data.cardType));
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.getComponentForElementType(this.data.elementType));
         const viewContainerRef = this.container;
         viewContainerRef.clear();
         const componentRef = viewContainerRef.createComponent(componentFactory);
         (<basepageComponent>componentRef.instance).data = this.data;
       }
-      private getComponentForPageType(elementType) {
+      private getComponentForElementType(elementType) {
         return this.templateMapper[elementType];
       }
   }
