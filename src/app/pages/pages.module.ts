@@ -57,7 +57,7 @@ import { DynamicModule } from '../directives/dynamic/dynamic.module';
     RootcontainerComponent,
     TypewriterheaderComponent,
   ],
-  entryComponents: [ headertopComponent ],
+  entryComponents: [ headertopComponent, RegisterComponent ],
 
 })
 export class PagesModule { }

@@ -1,8 +1,9 @@
 // tslint:disable-next-line:max-line-length
-import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, ComponentFactoryResolver, ChangeDetectorRef } from '@angular/core';
+import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 import { headertopComponent } from '../ui/headertop/headertop.component';
 
-import { Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { RegisterComponent } from '../pages/register/register.component';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -10,18 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewInit {
   @Input() dynamic: Observable<any>;
-
-  public obj = {
-    title: 'Hello',
-    message: 'World'
-  };
+  data: Subscription;
 
   private elRef: any;
   private component;
 
+  readonly templateMapper = {
+    headertop: headertopComponent,
+    register: RegisterComponent
+  };
+
   constructor(
     public viewContainerRef: ViewContainerRef,
-    private cdRef: ChangeDetectorRef,
     private factory: ComponentFactoryResolver
   ) {
     this.elRef = viewContainerRef;
@@ -29,29 +30,44 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngOnInit() {
-    //
-  }
-
-  ngOnDestroy() {
-
-  }
-
-  ngAfterViewInit() {
-    this.cdRef.detectChanges();
-    this.loadComponent();
-  }
-
-  loadComponent() {
-    const componentFactory = this.factory.resolveComponentFactory(this.component);
-
-    this.elRef.clear();
-
-    const componentRef = this.elRef.createComponent(componentFactory);
-
     this.dynamic.subscribe((data) => {
       if (data) {
-        (<any>componentRef.instance).data = data[0];
+        this.loadComponent(data[0]);
       }
     });
   }
+
+  ngOnDestroy() {
+    this.data.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+
+  }
+
+  loadComponent(data: any) {
+    const components = data.templates[0].components;
+    const orgdata = data;
+
+    for (let i = 0; i < components.length; i++) {
+      const componentFactory = this.factory.resolveComponentFactory(this.getComponentByAlias(components[i].name));
+      this.elRef.clear();
+
+      const componentRef = this.elRef.createComponent(componentFactory);
+
+      (<any>componentRef.instance).data = orgdata;
+    }
+
+    // const componentFactory = this.factory.resolveComponentFactory(this.component);
+
+    // this.elRef.clear();
+    // const componentRef = this.elRef.createComponent(componentFactory);
+
+    // (<any>componentRef.instance).data = data;
+  }
+
+  private getComponentByAlias(alias: string) {
+    return this.templateMapper[alias];
+  }
+
 }
