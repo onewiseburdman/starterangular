@@ -1,6 +1,7 @@
 import { DynamicComponentDirective } from './../../directives/dynamic-menu.directive';
 import { headertopComponent } from './../headertop/headertop.component';
 import { Component, OnInit, Input, ComponentFactoryResolver, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import {ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'rootcontainer',
@@ -12,13 +13,15 @@ export class RootcontainerComponent implements OnInit {
   @ViewChild(DynamicComponentDirective) dynamicHost: DynamicComponentDirective;
   dynamicComponent: any;
   interval: any;
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(private componentFactoryResolver: ComponentFactoryResolver,
+    private cdref: ChangeDetectorRef) {
     this.dynamicComponent = headertopComponent;
+   
   }
 
   ngAfterViewInit() {
     this.loadComponent();
-    
+    this.cdref.detectChanges();
   }
   ngOnDestroy() {
     clearInterval(this.interval);

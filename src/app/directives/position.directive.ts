@@ -4,8 +4,7 @@ import { Directive, ViewContainerRef, TemplateRef, OnInit, Input } from '@angula
   selector: '[pub]'
 })
 export class PositionDirective implements OnInit{
-  published: any;
-@Input () templateposition: string;
+  published=false;
   constructor(private viewContainer: ViewContainerRef,
     private template: TemplateRef<Object>) { }
 ngOnInit(){
