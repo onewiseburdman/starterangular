@@ -20,9 +20,9 @@ export class RootComponent implements OnInit {
   status: boolean = false;
   animationState = 'out';
   openedBool: boolean = false;
-  collapse: string = "closed";
-  sideNav= 'out';
-  pageData: any;
+  collapse: string = 'closed';
+  sideNav = 'out';
+  pageData = new BehaviorSubject<any>('');
   route0$: any;
   route1$: any;
   route2$: any;
@@ -54,7 +54,7 @@ export class RootComponent implements OnInit {
 
   toggleCollapseIcon() {
   // this.show = !this.show
-    this.collapse = this.collapse == "open" ? 'closed' : 'open';
+    this.collapse = this.collapse == 'open' ? 'closed' : 'open';
   }
 
   toggleShowDiv(divName: string) {
@@ -89,13 +89,7 @@ export class RootComponent implements OnInit {
     .pipe(
       leftJoin(this.afs, 'templatename', 'templates'),
       shareReplay(1)
-    ).subscribe((data) => {
-      this.pageData = data;
-      // this.styles = data[0].templates[0].styles;
-      // this.fonts = data[0].templates[0].fonts;
-      // this.layouts = data[0].templates[0].layouts;
-    });
-   
+    );
   }
 
   ngOnInit() {

@@ -6,12 +6,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./headertop.component.css']
 })
 export class headertopComponent implements OnInit {
-  @Input() data: string;
+  @Input() data: any;
 
   @Input ('title') title: string;
   @Input ('icons') icons: string;
     
     ngOnInit() {
-
+      console.log(this.data);
     }
 }

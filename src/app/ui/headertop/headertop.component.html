@@ -1,11 +1,11 @@
 <div class="height-10">
    
-{{pageData | json}}
+{{data | json}}
    <div class="center">
-     <headertitle [title]="pageData?.title">
+     <headertitle [title]="data?.title">
      </headertitle>
     </div>
     <div class="end">
-       <navicons [icons]="pageData?.social"></navicons>     
+       <!-- <navicons [icons]="data?.social"></navicons>      -->
     </div> 
 </div>

@@ -1,4 +1,4 @@
-import { DynamicComponentDirective } from './directives/dynamic-menu.directive';
+// import { DynamicComponentDirective } from './directives/dynamic-menu.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserTransferStateModule } from '@angular/platform-browser';
@@ -21,12 +21,13 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireFunctionsModule } from 'angularfire2/functions';
 //temp 
 
+import { DynamicModule } from './directives/dynamic/dynamic.module';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-   
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
@@ -36,7 +37,8 @@ import { AngularFireFunctionsModule } from 'angularfire2/functions';
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'whoisrunningfor' }),
     BrowserTransferStateModule,
-    PagesModule
+    PagesModule,
+    DynamicModule
   ],
   providers: [],
   bootstrap: [AppComponent]

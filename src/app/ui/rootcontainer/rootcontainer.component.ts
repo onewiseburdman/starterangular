@@ -5,12 +5,14 @@ import { Component, OnInit, Input, Output, ComponentFactoryResolver, ViewChild, 
 import {ChangeDetectorRef } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'rootcontainer',
   templateUrl: './rootcontainer.component.html',
   styleUrls: ['./rootcontainer.component.css']
 })
-export class RootcontainerComponent implements OnInit {
- @Input() pageData: any;
+export class RootcontainerComponent implements OnInit, OnDestroy, AfterViewInit {
+  @Input() pageData: any;
+
   @ViewChild(DynamicComponentDirective) dynamicHost: DynamicComponentDirective;
   dynamicComponent: any;
   interval: any;
@@ -21,17 +23,21 @@ export class RootcontainerComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.loadComponent();
+    // this.loadComponent();
     this.cdref.detectChanges();
   }
+
   ngOnDestroy() {
     clearInterval(this.interval);
   }
+
   loadComponent() {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.dynamicComponent);
 
     this.dynamicHost.viewContainerRef.clear();
-    this.dynamicHost.viewContainerRef.createComponent(componentFactory);
+
+    const componentRef = this.dynamicHost.viewContainerRef.createComponent(componentFactory);
+    (<any>componentRef.instance).data = this.pageData;
   }
 
   ngOnInit() {
