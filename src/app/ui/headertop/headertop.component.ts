@@ -12,6 +12,6 @@ export class headertopComponent implements OnInit {
   @Input ('icons') icons: string;
     
     ngOnInit() {
-      console.log(this.data);
+      //
     }
 }

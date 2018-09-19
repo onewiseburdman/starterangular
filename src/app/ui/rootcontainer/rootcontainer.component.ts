@@ -19,7 +19,6 @@ export class RootcontainerComponent implements OnInit, OnDestroy, AfterViewInit 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
     private cdref: ChangeDetectorRef) {
     this.dynamicComponent = headertopComponent;
-   
   }
 
   ngAfterViewInit() {
@@ -41,6 +40,5 @@ export class RootcontainerComponent implements OnInit, OnDestroy, AfterViewInit 
   }
 
   ngOnInit() {
-   console.log(this.pageData);
-
-  }}
+  }
+}

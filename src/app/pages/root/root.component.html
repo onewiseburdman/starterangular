@@ -1,6 +1,6 @@
 <div class="page-background">
     <div [ngSwitch]='route0$'>
-        <div *ngSwitchCase="'home'"><rootcontainer [pageData]="joined | async"></rootcontainer></div>
+        <div *ngSwitchCase="'home'"><rootcontainer [pageData]="joined"></rootcontainer></div>
       <div *ngSwitchCase="'events'"><app-events></app-events></div>
       <div *ngSwitchCase="'admin'"><app-admin></app-admin></div>
       <div *ngSwitchCase="'checkout'">checkout</div>

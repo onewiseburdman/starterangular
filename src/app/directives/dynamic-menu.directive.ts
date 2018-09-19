@@ -2,12 +2,19 @@
 import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, ComponentFactoryResolver, ChangeDetectorRef } from '@angular/core';
 import { headertopComponent } from '../ui/headertop/headertop.component';
 
+import { Observable } from 'rxjs';
+
 @Directive({
   // tslint:disable-next-line:directive-selector
-  selector: '[d-menu]'
+  selector: '[dynamic]'
 })
 export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewInit {
-  @Input() data: any;
+  @Input() dynamic: Observable<any>;
+
+  public obj = {
+    title: 'Hello',
+    message: 'World'
+  };
 
   private elRef: any;
   private component;
@@ -22,7 +29,7 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngOnInit() {
-    console.log(this.elRef);
+    //
   }
 
   ngOnDestroy() {
@@ -40,6 +47,11 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
     this.elRef.clear();
 
     const componentRef = this.elRef.createComponent(componentFactory);
-    (<any>componentRef.instance).data = this.data;
+
+    this.dynamic.subscribe((data) => {
+      if (data) {
+        (<any>componentRef.instance).data = data[0];
+      }
+    });
   }
 }

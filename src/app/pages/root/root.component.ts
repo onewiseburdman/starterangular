@@ -90,6 +90,9 @@ export class RootComponent implements OnInit {
       leftJoin(this.afs, 'templatename', 'templates'),
       shareReplay(1)
     );
+    this.joined.subscribe((data) => {
+      console.log(data);
+    });
   }
 
   ngOnInit() {
