@@ -1,7 +1,7 @@
 import { PositionDirective } from './../../directives/position.directive';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { leftJoin } from './../../services/collectionJoin';
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input,} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ContentService } from '../../services/content.service';

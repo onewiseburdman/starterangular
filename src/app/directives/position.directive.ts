@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef, TemplateRef, OnInit, Input } from '@angular/core';
 
 @Directive({
-  selector: '[published]'
+  selector: '[pub]'
 })
 export class PositionDirective implements OnInit{
   published: any;

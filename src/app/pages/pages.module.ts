@@ -1,6 +1,3 @@
-import { basepagemenuComponent } from './../ui/basepagemenu/basepagemenu.component';
-import { basepagelayoutitemComponent } from './../ui/basepagelayoutitem/basepagelayoutitem.component';
-import { basepagelayoutComponent } from './../ui/basepagelayout/basepagelayout.component';
 import { cssimporterComponent } from './../ui/cssimporter/cssimporter.component';
 import { IconsModule } from './../ui/icons/icons.module';
 import { NgModule } from '@angular/core';
@@ -12,11 +9,10 @@ import { EventsComponent } from './events/events.component';
 import { RegisterComponent } from './register/register.component';
 
 //directives
-import { PositionDirective } from './../directives/position.directive';
+import { DynamicComponentDirective } from './../directives/dynamic-menu.directive';
 
 //ui
 import { RootcontainerComponent } from '../ui/rootcontainer/rootcontainer.component';
-import { basepageComponent } from './../ui/basepage/basepage.component';
 
 import { TypewriterheaderComponent } from './../ui/typewriterheader/typewriterheader.component';
 import { InnercontainerComponent } from '../ui/innercontainer/innercontainer.component';
@@ -30,7 +26,6 @@ import { footersiteComponent } from './../ui/footersite/footersite.component';
 import { SlideInOutAnimation } from './../animations/slideinout';
 import { leftnavComponent } from './../ui/leftnav/lefnav.component';
 import {dynamicbackgroundComponent} from './../ui/dynamicbackground/dynamicbackground.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -40,11 +35,8 @@ import {dynamicbackgroundComponent} from './../ui/dynamicbackground/dynamicbackg
   ],
   declarations: [
     AdminComponent,
-    basepageComponent,
-    basepagelayoutComponent,
-    basepagelayoutitemComponent,
-    basepagemenuComponent,
     cssimporterComponent,
+    DynamicComponentDirective,
     dynamicbackgroundComponent,
     EventsComponent,
     InnercontainerComponent,
@@ -59,12 +51,11 @@ import {dynamicbackgroundComponent} from './../ui/dynamicbackground/dynamicbackg
     RootComponent,
     RootcontainerComponent,
     TypewriterheaderComponent,
-    RegisterComponent,
-    PositionDirective
+    RegisterComponent  
   ],
   
   exports:[
-    basepageComponent,
+    DynamicComponentDirective,
     fontimporterComponent,
     InnercontainerComponent,
     RootcontainerComponent,
@@ -72,7 +63,7 @@ import {dynamicbackgroundComponent} from './../ui/dynamicbackground/dynamicbackg
     headertopComponent,
     headertitleComponent 
   ],
-  entryComponents: [ basepagemenuComponent],
+  entryComponents: [ headertopComponent ],
 
 })
 export class PagesModule { }
