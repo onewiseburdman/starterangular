@@ -4,5 +4,6 @@ import { Directive, ViewContainerRef } from '@angular/core';
   selector: '[d-menu]',
 })
 export class DynamicComponentDirective {
+  
   constructor(public viewContainerRef: ViewContainerRef) { }
 }

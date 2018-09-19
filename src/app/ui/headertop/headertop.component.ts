@@ -6,7 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./headertop.component.css']
 })
 export class headertopComponent implements OnInit {
-  @Input() pageData: string;
+  @Input() data: string;
+
+  @Input ('title') title: string;
+  @Input ('icons') icons: string;
     
     ngOnInit() {
 

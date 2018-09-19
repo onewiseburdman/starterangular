@@ -1,6 +1,7 @@
 import { DynamicComponentDirective } from './../../directives/dynamic-menu.directive';
 import { headertopComponent } from './../headertop/headertop.component';
-import { Component, OnInit, Input, ComponentFactoryResolver, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, ComponentFactoryResolver, ViewChild, AfterViewInit, 
+  OnDestroy } from '@angular/core';
 import {ChangeDetectorRef } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ import {ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./rootcontainer.component.css']
 })
 export class RootcontainerComponent implements OnInit {
- @Input () pageData: any;
+ @Input() pageData: any;
   @ViewChild(DynamicComponentDirective) dynamicHost: DynamicComponentDirective;
   dynamicComponent: any;
   interval: any;
@@ -34,6 +35,6 @@ export class RootcontainerComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+   console.log(this.pageData);
 
   }}
