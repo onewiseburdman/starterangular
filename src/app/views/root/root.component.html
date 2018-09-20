@@ -1,13 +1,13 @@
 <div class="page-background">
     <div [ngSwitch]='route0$'>
-        <div *ngSwitchCase="'home'"><rootcontainer [pageData]="joined"></rootcontainer></div>
+        <div *ngSwitchCase="'home'">
+          <rootcontainer [pageData]="joined"></rootcontainer></div>
       <div *ngSwitchCase="'events'"><app-events></app-events></div>
       <div *ngSwitchCase="'admin'"><app-admin></app-admin></div>
       <div *ngSwitchCase="'checkout'">checkout</div>
       <div *ngSwitchCase="'register'"><app-register></app-register></div>
-      <!-- <div *ngSwitchDefault>
-        <innercontainer [data]="pageData"></innercontainer>
-      </div> -->
+      <div *ngSwitchDefault>
+hello      </div> 
   </div>
   </div>
 

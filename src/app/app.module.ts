@@ -1,14 +1,17 @@
+import { ContentService } from './services/content.service';
+import { DynamicModule } from './directives/dynamic/dynamic.module';
 // import { DynamicComponentDirective } from './directives/dynamic-menu.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserTransferStateModule } from '@angular/platform-browser';
+//service
 
 import { NgModule } from '@angular/core';
 //app router
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //single pages module 
-import { PagesModule } from './pages/pages.module';
+import { ViewsModule } from './views/views.module';
 //environment
 import { environment } from '../environments/environment';
 //firestore
@@ -21,7 +24,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireFunctionsModule } from 'angularfire2/functions';
 //temp 
 
-import { DynamicModule } from './directives/dynamic/dynamic.module';
 
 @NgModule({
   declarations: [
@@ -37,10 +39,10 @@ import { DynamicModule } from './directives/dynamic/dynamic.module';
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'whoisrunningfor' }),
     BrowserTransferStateModule,
-    PagesModule,
+    ViewsModule,
     DynamicModule
   ],
-  providers: [],
+  providers: [ContentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

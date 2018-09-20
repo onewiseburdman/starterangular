@@ -7,8 +7,10 @@ import { map, filter  } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
+  
 })
 export class ContentService {
+  
   route0$: any;
   route1$: any;
   route2$: any;

@@ -3,7 +3,7 @@ import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, C
 import { headertopComponent } from '../ui/headertop/headertop.component';
 
 import { Subscription, Observable } from 'rxjs';
-import { RegisterComponent } from '../pages/register/register.component';
+import { RegisterComponent } from '../views/register/register.component';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -17,8 +17,7 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   private component;
 
   readonly templateMapper = {
-    headertop: headertopComponent,
-    register: RegisterComponent
+    headertop: headertopComponent
   };
 
   constructor(
@@ -38,7 +37,6 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngOnDestroy() {
-    this.data.unsubscribe();
   }
 
   ngAfterViewInit() {
@@ -57,7 +55,7 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
 
       (<any>componentRef.instance).data = orgdata;
     }
-
+//do not use
     // const componentFactory = this.factory.resolveComponentFactory(this.component);
 
     // this.elRef.clear();
