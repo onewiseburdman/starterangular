@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'template',
+  selector: 'template-ng',
   templateUrl: './template.component.html',
   styleUrls: ['./template.component.css']
 })

@@ -26,6 +26,8 @@ import {dynamicbackgroundComponent} from '../ui/dynamicbackground/dynamicbackgro
 import { DynamicModule } from '../directives/dynamic/dynamic.module';
 import { headertitleComponent } from '../ui/headertitle/headertitle.component';
 
+import { SanitizerPipe } from '../utils/sanitizer.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { headertitleComponent } from '../ui/headertitle/headertitle.component';
     RootcontainerComponent,
     TypewriterheaderComponent,
     RegisterComponent,
-    templateComponent
+    templateComponent,
+    SanitizerPipe
   ],
   exports: [
     fontimporterComponent,

@@ -3,8 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'cssimporter',
-  template: `<ng-container *ngFor="let style of styles">
-  <link rel="stylesheet" [attr.url]="sanitizer.bypassSecurityTrustResourceUrl + '(' + style.cascadelink + ')'">
+  template: `<ng-container *ngFor="let style of data.templates[0]?.styles">
+  <link rel="stylesheet" [href]="style.cascadelink | sanitize">
 </ng-container> `
 })
 export class cssimporterComponent implements OnInit {
@@ -14,10 +14,10 @@ export class cssimporterComponent implements OnInit {
 
   }
 
+  @Input() data: any;
 
-  @Input() styles: string;
-    
-    ngOnInit() {
+  ngOnInit() {
 
-    }
+  }
+
 }

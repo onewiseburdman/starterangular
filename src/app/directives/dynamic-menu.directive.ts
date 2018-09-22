@@ -4,7 +4,8 @@ import { cssimporterComponent } from './../ui/cssimporter/cssimporter.component'
 // tslint:disable-next-line:max-line-length
 import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 import { templateComponent } from '../ui/template/template.component';
-import { Subscription, Observable } from 'rxjs';
+
+import { Subscription, Observable, from } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Directive({
@@ -35,6 +36,7 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   ngOnInit() {
     this.dynamic.subscribe((data) => {
       if (data) {
+        console.log(data[0]);
         this.loadComponent(data[0]);
       }
     });
@@ -49,29 +51,19 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   }
 
   loadComponent(data: any) {
-    const components = data.templates[0].components;
-    const filtered = components.filter(function (components){
-      data.templates[0].components[0].published === true;
-    }
-      
-    )
+    const components: Array<any> = data.templates[0].components;
     const orgdata = data;
-    
-    for (let i = 0; i < filtered.length; i++) {
-      const componentFactory = this.factory.resolveComponentFactory(this.getComponentByAlias(components[i].name));
-      // if left doesn't allow the other components to generate this.elRef.clear();
-      /////we need to add a true or false statement here for published or not.
-      const componentRef = this.elRef.createComponent(componentFactory);
+    const filtered = from(components).pipe(
+      filter(component => component.published === true)
+    );
 
+    filtered.subscribe((component) => {
+      const componentFactory = this.factory.resolveComponentFactory(this.getComponentByAlias(component.name));
+      const componentRef = this.elRef.createComponent(componentFactory);
       (<any>componentRef.instance).data = orgdata;
-    }
-//do not use
-    // const componentFactory = this.factory.resolveComponentFactory(this.component);
+    });
 
     // this.elRef.clear();
-    // const componentRef = this.elRef.createComponent(componentFactory);
-
-    // (<any>componentRef.instance).data = data;
   }
 
   private getComponentByAlias(alias: string) {
