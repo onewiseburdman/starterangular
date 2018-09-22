@@ -70,8 +70,12 @@ export class RootComponent implements OnInit {
   }
   getContent() {
     this.content.loadContent().subscribe(data => {
-      this.pageData = data;
-      this.templatename.next(this.pageData[0].templatename);
+      if (data) {
+        this.pageData = data;
+        if (this.pageData[0]) {
+          this.templatename.next(this.pageData[0].templatename);
+        }
+      }
       // this.templateposition.next(this.pageData[0].templateposition);
     });
   }
