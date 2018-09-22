@@ -20,7 +20,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "baseHref": "/",
-"deployUrl": "/",
+            "deployUrl": "/",
             "assets": [
               "src/favicon.ico",
               "src/assets"

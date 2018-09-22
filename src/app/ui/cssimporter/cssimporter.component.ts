@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'cssimporter',
@@ -10,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class cssimporterComponent implements OnInit {
   cascadelink;
   url;
-  constructor(public sanitizer: DomSanitizer) {
+  constructor() {
 
   }
 
