@@ -7,11 +7,10 @@ import { AdminComponent } from './admin/admin.component';
 import { LostPageComponent } from './lost-page-component/lost-page-component.component';
 import { EventsComponent } from './events/events.component';
 import { RegisterComponent } from './register/register.component';
-
 //ui
 import { RootcontainerComponent } from '../ui/rootcontainer/rootcontainer.component';
 
-import { headertopComponent } from '../ui/headertop/headertop.component';
+import { templateComponent } from '../ui/template/template.component';
 
 import { TypewriterheaderComponent } from '../ui/typewriterheader/typewriterheader.component';
 import { InnercontainerComponent } from '../ui/innercontainer/innercontainer.component';
@@ -25,6 +24,7 @@ import { leftnavComponent } from '../ui/leftnav/lefnav.component';
 import {dynamicbackgroundComponent} from '../ui/dynamicbackground/dynamicbackground.component';
 
 import { DynamicModule } from '../directives/dynamic/dynamic.module';
+import { headertitleComponent } from '../ui/headertitle/headertitle.component';
 
 @NgModule({
   imports: [
@@ -49,7 +49,7 @@ import { DynamicModule } from '../directives/dynamic/dynamic.module';
     RootcontainerComponent,
     TypewriterheaderComponent,
     RegisterComponent,
-    headertopComponent
+    templateComponent
   ],
   exports: [
     fontimporterComponent,
@@ -57,7 +57,7 @@ import { DynamicModule } from '../directives/dynamic/dynamic.module';
     RootcontainerComponent,
     TypewriterheaderComponent,
   ],
-  entryComponents: [ headertopComponent, RegisterComponent ],
+  entryComponents: [ templateComponent, cssimporterComponent, dynamicbackgroundComponent, headertitleComponent ],
 
 })
 export class ViewsModule { }
