@@ -10,10 +10,12 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class RootcontainerComponent implements OnInit, AfterViewInit {
   @Input() pageData: Observable<any>;
-  data = new BehaviorSubject<any>([]);
+ 
 
+  data = new BehaviorSubject<any>([]);
+  
   dynamicComponent: any;
-  interval: any;
+  
 
   constructor(private cdRef: ChangeDetectorRef) {
     //

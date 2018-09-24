@@ -1,3 +1,4 @@
+import { GetlocationComponent } from './../ui/getlocation/getlocation.component';
 import { cssimporterComponent } from '../ui/cssimporter/cssimporter.component';
 import { IconsModule } from '../ui/icons/icons.module';
 import { NgModule } from '@angular/core';
@@ -41,6 +42,7 @@ import { SanitizerPipe } from '../utils/sanitizer.pipe';
     cssimporterComponent,
     dynamicbackgroundComponent,
     EventsComponent,
+    GetlocationComponent,
     InnercontainerComponent,
     fontimporterComponent,
     footericonsComponent,

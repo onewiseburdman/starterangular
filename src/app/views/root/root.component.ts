@@ -1,14 +1,13 @@
-import { PositionDirective } from './../../directives/position.directive';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { leftJoin } from './../../services/collectionJoin';
-import { Component, OnInit, Input,} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ContentService } from '../../services/content.service';
 import { shareReplay } from 'rxjs/operators';
 import { SlideInOutAnimation, SidenavAnimation } from '../../animations/slideinout';
 import { BehaviorSubject } from 'rxjs';
-
+declare const google: any;
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
@@ -17,6 +16,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class RootComponent implements OnInit {
+  @Output() zipEvent 
   status: boolean = false;
   animationState = 'out';
   openedBool: boolean = false;
@@ -28,6 +28,16 @@ export class RootComponent implements OnInit {
   route2$: any;
   joined;
   realm;
+  lat;
+  lng;
+  address;
+  street;
+  street_number;
+  city;
+  county;
+  name_state;
+  zip;
+  zip_4;
   // styles;
   // css;
   // layouts;
@@ -38,7 +48,8 @@ export class RootComponent implements OnInit {
     private content: ContentService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+   
   ) {
     this.realm = document.location.hostname;
     this.route.params.subscribe(params => {
@@ -70,6 +81,7 @@ export class RootComponent implements OnInit {
   }
   getContent() {
     this.content.loadContent().subscribe(data => {
+      
       if (data) {
         this.pageData = data;
         if (this.pageData[0]) {
@@ -96,14 +108,66 @@ export class RootComponent implements OnInit {
     );
   }
 
+  public getuserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.lat = position.coords.latitude; // Works fine
+          this.lng = position.coords.longitude;  // Works fine
+
+          let geocoder = new google.maps.Geocoder();
+          let latlng = new google.maps.LatLng(this.lat, this.lng);
+          let request = {
+            latLng: latlng
+          };
+
+          geocoder.geocode(request, (results, status) => {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[0] != null) {
+
+                this.street_number = results[0].address_components[0]; 
+                this.street = results[0].address_components[1];
+                this.city = results[0].address_components[3];
+                this.name_state = results[0].address_components[5];
+                this.zip = results[0].address_components[7];
+                this.zip_4 = results[0].address_components[8]
+                this.county = results[0].address_components[4]; 
+              } else {
+                alert("No address available");
+              }
+            }
+          });
+        },
+        error => {
+          console.log("Error code: " + error.code + "<br /> Error message: " + error.message);
+        }
+      );
+    }
+  }
+
   ngOnInit() {
     this.getContent();
     this.getData();
-  }
- 
+    this.getuserLocation(); 
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position)=>{
+  //       const longitude = position.coords.longitude;
+  //       const latitude = position.coords.latitude;
+  //       this.callApi(longitude, latitude);
+  //       console.log(position);
+  //     });
+  // } else {
+  //    console.log("No support for geolocation")
+  // }
+
+
+
+
+
+
 }
 
-
+}
 
 
 

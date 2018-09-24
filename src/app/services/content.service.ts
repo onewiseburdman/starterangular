@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 
-import { Observable } from 'rxjs';
-import { map, filter  } from 'rxjs/operators';
+import { Observable,  BehaviorSubject  } from 'rxjs';
+import { map, filter, } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
   
 })
 export class ContentService {
-  
+  private zipcode = new BehaviorSubject('43004');
+  currentZipcode = this.zipcode.asObservable();
   route0$: any;
   route1$: any;
   route2$: any;
@@ -39,6 +40,7 @@ export class ContentService {
   }
 
   loadContent() {
+    
     this.routes = this.afs.collection('organizations', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
       if (this.route0$) {

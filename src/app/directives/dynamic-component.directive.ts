@@ -1,6 +1,6 @@
-import { headertitleComponent } from './../ui/headertitle/headertitle.component';
-import { dynamicbackgroundComponent } from './../ui/dynamicbackground/dynamicbackground.component';
-import { cssimporterComponent } from './../ui/cssimporter/cssimporter.component';
+import { headertitleComponent } from '../ui/headertitle/headertitle.component';
+import { dynamicbackgroundComponent } from '../ui/dynamicbackground/dynamicbackground.component';
+import { cssimporterComponent } from '../ui/cssimporter/cssimporter.component';
 // tslint:disable-next-line:max-line-length
 import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 import { templateComponent } from '../ui/template/template.component';
