@@ -34,12 +34,7 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngOnInit() {
-    this.dynamic.subscribe((data) => {
-      if (data) {
-        console.log(data[0]);
-        this.loadComponent(data[0]);
-      }
-    });
+    
   }
 
   ngOnDestroy() {
@@ -47,12 +42,18 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngAfterViewInit() {
-
+    this.dynamic.subscribe((data) => {
+      if (data) {
+        console.log(data);
+        this.loadComponent(data);
+      }
+    });
   }
 
   loadComponent(data: any) {
-    const components: Array<any> = data.templates[0].components;
-    const orgdata = data;
+    const components: Array<any> = data[0][0].templates[0].components;
+    const orgdata = data[0][0];
+    const navdata = data[1];
     const filtered = from(components).pipe(
       filter(component => component.published === true)
     );
@@ -61,6 +62,9 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
       const componentFactory = this.factory.resolveComponentFactory(this.getComponentByAlias(component.name));
       const componentRef = this.elRef.createComponent(componentFactory);
       (<any>componentRef.instance).data = orgdata;
+      if (navdata) {
+        (<any>componentRef.instance).navdata = navdata;
+      }
     });
 
     // this.elRef.clear();
