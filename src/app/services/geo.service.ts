@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Observable, BehaviorSubject } from 'rxjs';
 
+import { google } from '@google/maps'
 declare const google: any;
 
 @Injectable({

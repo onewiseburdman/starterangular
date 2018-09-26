@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DynamicComponentDirective } from '../dynamic-component.directive';
-import { headertitleComponent } from '../../ui/headertitle/headertitle.component';
+
 // import { naviconsComponent } from '../../ui/navicons/navicons.component';
 @NgModule({
   imports: [
@@ -11,12 +11,10 @@ import { headertitleComponent } from '../../ui/headertitle/headertitle.component
   ],
   declarations: [
     DynamicComponentDirective,
-    headertitleComponent,
     // naviconsComponent
   ],
   exports: [
-    DynamicComponentDirective,
-    headertitleComponent
+    DynamicComponentDirective
     // naviconsComponent
   ]
 })

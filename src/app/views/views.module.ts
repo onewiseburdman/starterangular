@@ -1,3 +1,4 @@
+import { dynamicbackgroundsolidComponent } from './../ui/dynamicbackgroundsolid/dynamicbackgroundsolid.component';
 import { GetlocationComponent } from './../ui/getlocation/getlocation.component';
 import { cssimporterComponent } from '../ui/cssimporter/cssimporter.component';
 import { IconsModule } from '../ui/icons/icons.module';
@@ -9,7 +10,7 @@ import { LostPageComponent } from './lost-page-component/lost-page-component.com
 import { EventsComponent } from './events/events.component';
 import { RegisterComponent } from './register/register.component';
 //ui
-import { RootcontainerComponent } from '../ui/rootcontainer/rootcontainer.component';
+import { dynamiccontainerComponent} from '../ui/dynamiccontainer/dynamiccontainer.component';
 
 import { templateComponent } from '../ui/template/template.component';
 
@@ -41,8 +42,10 @@ import { SanitizerPipe } from '../utils/sanitizer.pipe';
     AdminComponent,
     cssimporterComponent,
     dynamicbackgroundComponent,
+    dynamicbackgroundsolidComponent,
     EventsComponent,
     GetlocationComponent,
+    headertitleComponent,
     InnercontainerComponent,
     fontimporterComponent,
     footericonsComponent,
@@ -50,19 +53,15 @@ import { SanitizerPipe } from '../utils/sanitizer.pipe';
     leftnavComponent,
     LostPageComponent,
     RootComponent,
-    RootcontainerComponent,
+    dynamiccontainerComponent,
     TypewriterheaderComponent,
     RegisterComponent,
     templateComponent,
     SanitizerPipe
   ],
   exports: [
-    fontimporterComponent,
-    InnercontainerComponent,
-    RootcontainerComponent,
-    TypewriterheaderComponent,
   ],
-  entryComponents: [ templateComponent, cssimporterComponent, dynamicbackgroundComponent, headertitleComponent ],
+  entryComponents: [ templateComponent, cssimporterComponent, dynamicbackgroundComponent, dynamicbackgroundsolidComponent, headertitleComponent ],
 
 })
 export class ViewsModule { }

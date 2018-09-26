@@ -1,0 +1,12 @@
+.background {
+    height: 100vh;
+    min-height: 100%;
+    min-width: 100%;
+    width: 100vw;
+    max-width: 99vw;
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    bottom: 0;
+    z-index: -1;
+}

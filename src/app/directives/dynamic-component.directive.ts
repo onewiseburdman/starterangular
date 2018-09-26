@@ -1,5 +1,6 @@
+import { dynamicbackgroundComponent } from './../ui/dynamicbackground/dynamicbackground.component';
+import { dynamicbackgroundsolidComponent } from './../ui/dynamicbackgroundsolid/dynamicbackgroundsolid.component';
 import { headertitleComponent } from '../ui/headertitle/headertitle.component';
-import { dynamicbackgroundComponent } from '../ui/dynamicbackground/dynamicbackground.component';
 import { cssimporterComponent } from '../ui/cssimporter/cssimporter.component';
 // tslint:disable-next-line:max-line-length
 import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
@@ -22,7 +23,8 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   readonly templateMapper = {
     template: templateComponent,
     cssimporter: cssimporterComponent,
-    dynamicbackground: dynamicbackgroundComponent ,
+    dynamicbackground: dynamicbackgroundComponent,
+    dynamicbackgroundsolid: dynamicbackgroundsolidComponent,
     headertitle: headertitleComponent
   };
 

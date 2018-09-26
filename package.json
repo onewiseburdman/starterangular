@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.1.8",
     "@angular/platform-server": "^6.1.8",
     "@angular/router": "^6.1.8",
+    "@google/maps": "^0.5.5",
     "@nguniversal/express-engine": "^6.1.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.1.0",
     "angular-feather": "^5.3.0",

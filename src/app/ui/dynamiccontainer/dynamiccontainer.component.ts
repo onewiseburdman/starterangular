@@ -4,11 +4,11 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'rootcontainer',
-  templateUrl: './rootcontainer.component.html',
-  styleUrls: ['./rootcontainer.component.css']
+  selector: 'dynamiccontainer',
+  templateUrl: './dynamiccontainer.component.html',
+  styleUrls: ['./dynamiccontainer.component.css']
 })
-export class RootcontainerComponent implements OnInit, AfterViewInit {
+export class dynamiccontainerComponent implements OnInit, AfterViewInit {
   @Input() pageData: Observable<any>;
  
 
