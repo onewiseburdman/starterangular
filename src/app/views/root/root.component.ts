@@ -1,13 +1,11 @@
-import { AngularFirestore } from 'angularfire2/firestore';
-import { leftJoin } from './../../services/collectionJoin';
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ContentService } from '../../services/content.service';
 import { GeoService } from '../../services/geo.service';
-import { shareReplay } from 'rxjs/operators';
+
 import { SlideInOutAnimation, SidenavAnimation } from '../../animations/slideinout';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +20,7 @@ export class RootComponent implements OnInit {
   openedBool: boolean = false;
   collapse: string = 'closed';
   sideNav = 'out';
-  pageData = new BehaviorSubject<any>('');
+  pageData: any;
   route0$: any;
   route1$: any;
   route2$: any;
@@ -46,12 +44,11 @@ export class RootComponent implements OnInit {
   // layouts;
   // fonts;
   templatename = new BehaviorSubject<any>('default');
-  // templateposition = new BehaviorSubject<any>('position');
+
   constructor(
     private content: ContentService,
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private afs: AngularFirestore,
     private geo: GeoService
   ) {
     this.realm = document.location.hostname;
@@ -82,46 +79,28 @@ export class RootComponent implements OnInit {
   clickEvent() {
       this.status = !this.status;
   }
+
   getContent() {
-    this.content.loadContent().subscribe(data => {
-      if (data) {
-        this.pageData = data;
-        if (this.pageData[0]) {
-          this.templatename.next(this.pageData[0].templatename);
-        }
-      }
-    });
+    // return this.joined = this.content.loadContent();
+    return this.joined = combineLatest(this.content.loadContent(), this.geo.getLocation());
   }
+
   public sanitizedHtml(value) {
     return this.sanitizer.bypassSecurityTrustHtml(value);
   }
 
-  getData() {
-    this.joined = this.afs.collection('organizations', ref => {
-      let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-      query = query.where('orgdomain', '==', this.realm);
-      return query;
-    })
-    .valueChanges()
-    .pipe(
-      leftJoin(this.afs, 'templatename', 'templates'),
-      shareReplay(1)
-    );
-  }
-
   ngOnInit() {
     this.getContent();
-    this.getData();
-    this.geo.getLocation().subscribe((data) => {
-      console.log(data);
-      this.street_number = data[0];
-      this.street = data[1];
-      this.city = data[3];
-      this.name_state = data[5];
-      this.zip = data[7];
-      this.zip_4 = data[8];
-      this.county = data[4];
-    });
+    // this.geo.getLocation().subscribe((data) => {
+    //   console.log(data);
+    //   this.street_number = data[0];
+    //   this.street = data[1];
+    //   this.city = data[3];
+    //   this.name_state = data[5];
+    //   this.zip = data[7];
+    //   this.zip_4 = data[8];
+    //   this.county = data[4];
+    // });
   }
 
 }

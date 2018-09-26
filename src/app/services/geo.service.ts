@@ -8,12 +8,12 @@ declare const google: any;
   providedIn: 'root'
 })
 export class GeoService {
-  private results = new BehaviorSubject<any>([]);
 
   constructor() { }
 
   getLocation(): Observable<any> {
     if (navigator.geolocation) {
+      const res = new BehaviorSubject<any>([]);
       navigator.geolocation.getCurrentPosition(
         position => {
           const lat = position.coords.latitude;
@@ -21,26 +21,26 @@ export class GeoService {
 
           const geocoder = new (google as any).maps.Geocoder();
           const latlng = new google.maps.LatLng(lat, lng);
-          const request: google.maps.GeocoderRequest = {
+          const request = {
             location: latlng
           };
 
           geocoder.geocode(request, (results, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
               if (results[0] != null) {
-                this.results.next(results[0].address_components);
+                res.next(results[0].address_components);
               } else {
-                this.results.next({ error: 'No address available !' });
+                res.next({ error: 'No address available !' });
               }
             }
           });
         },
         error => {
-          this.results.next({ error: error.message });
+          res.next({ error: error.message });
         }
       );
 
-      return this.results.asObservable();
+      return res.asObservable();
     }
   }
 

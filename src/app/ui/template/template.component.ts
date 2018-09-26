@@ -8,8 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class templateComponent implements OnInit {
   @Input() data: any;
   @Input ('styles') styles: string;
-  @Input ('title') title: string;
+  @Input() navdata?: any;
     ngOnInit() {
+      console.log(this.navdata);
       //
     }
 }

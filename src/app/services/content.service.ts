@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 
+import { leftJoin } from './collectionJoin';
+
 import { Observable,  BehaviorSubject  } from 'rxjs';
-import { map, filter, } from 'rxjs/operators';
+import { map, filter, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
-  
 })
 export class ContentService {
   private zipcode = new BehaviorSubject('43004');
@@ -22,7 +23,6 @@ export class ContentService {
     private afs: AngularFirestore,
     private route: ActivatedRoute,
     private router: Router,
-    
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -40,7 +40,7 @@ export class ContentService {
   }
 
   loadContent() {
-    
+    const realm = document.location.hostname;
     this.routes = this.afs.collection('organizations', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
       if (this.route0$) {
@@ -52,6 +52,7 @@ export class ContentService {
       if (this.route2$) {
         query = query.where(`${this.route2$}`, '==', true);
       }
+      query = query.where('orgdomain', '==', realm);
       return query;
     }).snapshotChanges().pipe(
       map(actions => {
@@ -60,7 +61,9 @@ export class ContentService {
           const id = a.payload.doc.id;
           return { id, ...data };
         });
-      })
+      }),
+      leftJoin(this.afs, 'templatename', 'templates'),
+      shareReplay(1)
     );
     return this.routes;
   }

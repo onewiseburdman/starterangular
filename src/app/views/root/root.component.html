@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <body>
 <div [ngSwitch]='route0$'>
     <div *ngSwitchCase="'home'">
@@ -10,6 +11,32 @@
     <div *ngSwitchDefault>hello</div> 
 </div>
 </body>
+=======
+{{ street | json}}
+{{ zip | json}}
+{{ city | json }}
+{{ zip_4 | json }}
+{{ lat | json }}
+{{ lng | json }}
+{{ address | json }}
+{{ street_number | json }}
+{{ county | json }}
+{{ name_state | json }}
+
+<div class="page-background">
+    <div [ngSwitch]='route0$'>
+        <div *ngSwitchCase="'home'">
+          <rootcontainer [pageData]="joined"></rootcontainer></div>
+      <div *ngSwitchCase="'events'"><app-events></app-events></div>
+      <div *ngSwitchCase="'admin'"><app-admin></app-admin></div>
+      <div *ngSwitchCase="'checkout'">checkout</div>
+      <div *ngSwitchCase="'register'"><app-register></app-register></div>
+      <div *ngSwitchDefault>
+          <rootcontainer [pageData]="joined"></rootcontainer>
+      </div> 
+  </div>
+  </div>
+>>>>>>> 943391955401f2f346ee843f7b1f0f0b41c8f474
 
 
 
