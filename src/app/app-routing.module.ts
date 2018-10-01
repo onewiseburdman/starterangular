@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DefaultViewComponent } from './views/default-view/default-view.component';
+import { LostViewComponent } from './views/lost-view/lost-view-component.component';
 
-import { LostPageComponent } from './views/lost-page-component/lost-page-component.component';
-import { RootComponent } from './views/root/root.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { 
 	  path: 'columbus/ohio', 
-	  component: RootComponent
+	  component: DefaultViewComponent
   },
   { 
 	  path: ':parent', 
-	  component: RootComponent
+	  component: DefaultViewComponent
   },
   { 
 	  path: ':parent/:child', 
-	  component: RootComponent
+	  component: DefaultViewComponent
   },
   { 
 	  path: ':parent/:child/:grandchild', 
-	  component: RootComponent
+	  component: DefaultViewComponent
   },
-  { path: '**', component: LostPageComponent}
+  { path: '**', component: LostViewComponent}
 ];
 
 @NgModule({

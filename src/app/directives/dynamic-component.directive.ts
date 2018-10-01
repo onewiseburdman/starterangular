@@ -1,10 +1,11 @@
-import { dynamicbackgroundComponent } from './../ui/dynamicbackground/dynamicbackground.component';
-import { dynamicbackgroundsolidComponent } from './../ui/dynamicbackgroundsolid/dynamicbackgroundsolid.component';
-import { headertitleComponent } from '../ui/headertitle/headertitle.component';
-import { cssimporterComponent } from '../ui/cssimporter/cssimporter.component';
+import { backgroundimageComponent } from './../views/page-elements/backgroundimage/backgroundimage.component';
+// import { dynamicbackgroundComponent } from './../../../page-elements/dynamicbackground/dynamicbackground.component';
+import { backgroundsolidComponent } from './../views/page-elements/backgroundsolid/backgroundsolid.component';
+import { headertitleComponent } from './../views/page-elements/headertitle/headertitle.component';
+import { csslinkComponent } from './../views/page-elements/csslink/csslink.component';
 // tslint:disable-next-line:max-line-length
 import { Directive, Input, OnInit, ViewContainerRef, AfterViewInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
-import { templateComponent } from '../ui/template/template.component';
+import { templateComponent } from './../views/page-elements/template/template.component';
 
 import { Subscription, Observable, from } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -22,9 +23,9 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
 
   readonly templateMapper = {
     template: templateComponent,
-    cssimporter: cssimporterComponent,
-    dynamicbackground: dynamicbackgroundComponent,
-    dynamicbackgroundsolid: dynamicbackgroundsolidComponent,
+    csslink: csslinkComponent,
+    backgroundimage: backgroundimageComponent,
+    backgroundsolid: backgroundsolidComponent,
     headertitle: headertitleComponent
   };
 

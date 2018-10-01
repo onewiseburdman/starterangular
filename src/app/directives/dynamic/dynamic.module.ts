@@ -1,4 +1,3 @@
-import { cssimporterComponent } from './../../ui/cssimporter/cssimporter.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -18,4 +17,4 @@ import { DynamicComponentDirective } from '../dynamic-component.directive';
     // naviconsComponent
   ]
 })
-export class DynamicModule { }
+export class dynamicModule { }

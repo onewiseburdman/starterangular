@@ -1,13 +1,13 @@
-import { ViewsModule } from './views.module';
+import { viewsModule } from './views.module';
 
-describe('ViewsModule', () => {
-  let viewsModule: ViewsModule;
+describe('viewsModule', () => {
+  let gluesModule: viewsModule;
 
   beforeEach(() => {
-    viewsModule = new ViewsModule();
+    gluesModule = new viewsModule();
   });
 
   it('should create an instance', () => {
-    expect(viewsModule).toBeTruthy();
+    expect(gluesModule).toBeTruthy();
   });
 });

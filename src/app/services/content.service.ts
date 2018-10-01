@@ -45,10 +45,10 @@ export class ContentService {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
       if (this.route0$) {
         query = query.where(`${this.route0$}`, '==', true);
-      }
+      } else
       if (this.route1$) {
         query = query.where(`${this.route1$}`, '==', true);
-      }
+      } else
       if (this.route2$) {
         query = query.where(`${this.route2$}`, '==', true);
       }

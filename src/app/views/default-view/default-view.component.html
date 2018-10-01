@@ -1,0 +1,10 @@
+<div [ngSwitch]='route0$'>
+  <div *ngSwitchCase="'home'"><home-view></home-view></div>
+    <div *ngSwitchCase="'events'"><events-view></events-view></div>
+    <div *ngSwitchCase="'admin'"><admin-view></admin-view></div>
+    <div *ngSwitchCase="'checkout'"><admin-view></admin-view>></div>
+    <div *ngSwitchCase="'register'"><register-view></register-view></div>
+    <div *ngSwitchDefault><site-view></site-view></div> 
+</div>
+
+<!-- <dynamiccontainer [pageData]="joined"></dynamiccontainer> -->
