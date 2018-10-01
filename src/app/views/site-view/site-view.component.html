@@ -1,20 +1,16 @@
-{{route1$}}
 
-    <div *ngIf="route0$ && route1$===!null">1</div>
-    <ng-template #second>
-      <div *ngIf="route1$; else third">2</div>
-    </ng-template>
-    <ng-template #third>
-      third
-    </ng-template>
-
-<!-- <div *ngIf="route0$ && !route1$">
-  {{route0$}}
-</div>
-<div *ngIf="route1$ && !route2$">
-    {{route1$}}
+<div *ngIf="route0$ === !null || route1$ === null || route1$=== undefined; else first">
+    {{route0$}}
   </div>
-  <div *ngIf="route2$">
-      {{route2$}}
-    </div> -->
+   
+<ng-template #first>
+  <div *ngIf="route2$ === null || route2$ === undefined; else second">
+    {{route0$}} {{route1$}}
+  </div>
+</ng-template>
+<ng-template #second>
+        {{route0$}} {{route1$}} {{route2$}}
+</ng-template>
+
+<!-- easiest way to switch templates and views dependent upon the route -->
  
