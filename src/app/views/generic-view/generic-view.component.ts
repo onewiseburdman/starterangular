@@ -1,13 +1,13 @@
-import { ContentService } from './../../services/content.service';
+import { ContentService } from '../../services/content.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'site-view',
-  templateUrl: './site-view.component.html',
-  styleUrls: ['./site-view.component.css']
+  selector: 'generic-view',
+  templateUrl: './generic-view.component.html',
+  styleUrls: ['./generic-view.component.css']
 })
-export class SiteViewComponent implements OnInit {
+export class GenericViewComponent implements OnInit {
   route0$: any;
   route1$: any;
   route2$: any;

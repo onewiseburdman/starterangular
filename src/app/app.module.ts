@@ -37,7 +37,7 @@ import { environment } from '../environments/environment';
     BrowserModule.withServerTransition({ appId: 'whoisrunningfor' }),
     BrowserTransferStateModule,
     dynamicModule,
-    viewsModule,
+    viewsModule
     
   ],
   providers: [ContentService],

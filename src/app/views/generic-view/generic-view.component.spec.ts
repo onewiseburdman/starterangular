@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageStructureComponent } from './page-structure.component';
+import { GenericViewComponent } from './generic-view.component';
 
-describe('PageStructureComponent', () => {
-  let component: PageStructureComponent;
-  let fixture: ComponentFixture<PageStructureComponent>;
+describe('GenericViewComponent', () => {
+  let component: GenericViewComponent;
+  let fixture: ComponentFixture<GenericViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageStructureComponent ]
+      declarations: [ GenericViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageStructureComponent);
+    fixture = TestBed.createComponent(GenericViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

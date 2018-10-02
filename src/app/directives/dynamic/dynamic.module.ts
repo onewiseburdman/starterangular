@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DynamicComponentDirective } from '../dynamic-component.directive';
+import { HomeDynamicDirective } from './../home-dynamic.directive';
 
 // import { naviconsComponent } from '../../ui/navicons/navicons.component';
 @NgModule({
@@ -10,10 +11,12 @@ import { DynamicComponentDirective } from '../dynamic-component.directive';
   ],
   declarations: [
     DynamicComponentDirective,
+    HomeDynamicDirective
     // naviconsComponent
   ],
   exports: [
-    DynamicComponentDirective
+    DynamicComponentDirective,
+    HomeDynamicDirective
     // naviconsComponent
   ]
 })

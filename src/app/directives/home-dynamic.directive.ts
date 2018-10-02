@@ -12,9 +12,9 @@ import { filter } from 'rxjs/operators';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
-  selector: '[dynamic]'
+  selector: '[dynamichome]'
 })
-export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewInit {
+export class HomeDynamicDirective implements OnInit, OnDestroy, AfterViewInit {
   @Input() dynamic: Observable<any>;
   data: Subscription;
 
