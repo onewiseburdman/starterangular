@@ -15,7 +15,7 @@ import { filter } from 'rxjs/operators';
   selector: '[dynamichome]'
 })
 export class HomeDynamicDirective implements OnInit, OnDestroy, AfterViewInit {
-  @Input() dynamic: Observable<any>;
+  @Input() dynamichome: Observable<any>;
   data: Subscription;
 
   private elRef: any;
@@ -45,7 +45,7 @@ export class HomeDynamicDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dynamic.subscribe((data) => {
+    this.dynamichome.subscribe((data) => {
       if (data) {
         console.log(data);
         this.loadComponent(data);
