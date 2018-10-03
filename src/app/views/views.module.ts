@@ -65,12 +65,11 @@ import { GenericViewComponent } from './generic-view/generic-view.component';
     leftnavComponent,
     ListViewComponent,
     LostViewComponent,
-    TypewriterheaderComponent,
     RegisterViewComponent,
-    templateComponent,
     SanitizerPipe,
-  ],
-  exports: [
+    templateComponent,
+    TypewriterheaderComponent,
+    
   ],
   entryComponents: [ 
     csslinkComponent, 

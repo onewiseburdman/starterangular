@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'admin-view',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-view.component.css']
 })
 export class AdminViewComponent implements OnInit {
+  @Input() pageData: Observable<any>;
+  
+  data = new BehaviorSubject<any>([]);
 
   constructor() { }
 

@@ -1,6 +1,7 @@
-import { ContentService } from '../../services/content.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'generic-view',
@@ -8,20 +9,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./generic-view.component.css']
 })
 export class GenericViewComponent implements OnInit {
+  @Input() pageData: Observable<any>;
+  
+  data = new BehaviorSubject<any>([]);
+  
   route0$: any;
   route1$: any;
   route2$: any;
-  realm;
-
+  
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdRef: ChangeDetectorRef
   ) {
-    this.realm = document.location.hostname;
+   
     this.route.params.subscribe(params => {
       this.route0$ = params['parent'];
       this.route1$ = params['child'];
       this.route2$ = params['grandchild'];
     });
   }
-  ngOnInit(){}
+  ngOnInit(){
+    this.cdRef.detectChanges();
+  }
 }

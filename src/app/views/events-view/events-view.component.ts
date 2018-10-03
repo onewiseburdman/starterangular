@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'events-view',
-  templateUrl: './events-view.component.html',
+  template: `<div [dynamicevents]="pageData"></div>`,
   styleUrls: ['./events-view.component.css']
 })
 export class EventsViewComponent implements OnInit {
+  @Input() pageData: Observable<any>;
+  
+  data = new BehaviorSubject<any>([]);
+  
+  dynamiceventsComponent: any;
+  
 
-  constructor() { }
+  constructor(private cdRef: ChangeDetectorRef) {
+    //
+  }
 
   ngOnInit() {
+    this.cdRef.detectChanges();
+  }
+
+  ngAfterViewInit() {
+    
   }
 
 }

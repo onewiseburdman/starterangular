@@ -7,7 +7,15 @@ import { Observable, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-default-view',
-  templateUrl: './default-view.component.html',
+  template: 
+    `<div [ngSwitch]='route0$'>
+      <div *ngSwitchCase="'home'"><home-view [pageData]="pageData"></home-view></div>
+      <div *ngSwitchCase="'events'"><events-view></events-view></div>
+      <div *ngSwitchCase="'admin'"><admin-view></admin-view></div>
+      <div *ngSwitchCase="'checkout'"><admin-view></admin-view>></div>
+      <div *ngSwitchCase="'register'"><register-view></register-view></div>
+      <div *ngSwitchDefault><generic-view></generic-view></div> 
+    </div>`,
   styleUrls: ['./default-view.component.css']
 })
 

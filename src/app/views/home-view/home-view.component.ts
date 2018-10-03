@@ -3,7 +3,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'home-view',
-  templateUrl: './home-view.component.html',
+  template: `<div [dynamichome]="pageData"></div>`,
   styleUrls: ['./home-view.component.css']
 })
 export class HomeViewComponent implements OnInit {

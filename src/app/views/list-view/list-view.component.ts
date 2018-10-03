@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'list-view',
-  templateUrl: './list-view.component.html',
+  template: `<div [dynamiclist]="pageData"></div>`,
   styleUrls: ['./list-view.component.css']
 })
 export class ListViewComponent implements OnInit {
+  @Input() pageData: Observable<any>;
+  
+  data = new BehaviorSubject<any>([]);
+  dynamiclistComponent: any;
 
-  constructor() { }
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.cdRef.detectChanges();
   }
+
+  ngAfterViewInit() { }
 
 }

@@ -1,23 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'register-view',
-  templateUrl: './register-view.component.html',
+  template: `<div [dynamicregister]="pageData"></div>`,
   styleUrls: ['./register-view.component.css']
 })
 export class RegisterViewComponent implements OnInit {
-  @Input() styles: any;
-  fontfamily: any;
-  constructor() { }
+  @Input() pageData: Observable<any>;
+  
+  data = new BehaviorSubject<any>([]);
+
+  dynamicregisterComponent: any;
+
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-    console.log(this.styles);
+    this.cdRef.detectChanges();
   }
-  setMyStyles(value) {
-    const fontfamily = {
-      'font-family': value.fontfamily
-    };
-    return fontfamily;
-  }
+
+  ngAfterViewInit() { }
 
 }
