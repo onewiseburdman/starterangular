@@ -10,11 +10,13 @@ import { Observable, combineLatest } from 'rxjs';
   template: 
     `<div [ngSwitch]='route0$'>
       <div *ngSwitchCase="'home'"><home-view [pageData]="pageData"></home-view></div>
-      <div *ngSwitchCase="'events'"><events-view></events-view></div>
-      <div *ngSwitchCase="'admin'"><admin-view></admin-view></div>
-      <div *ngSwitchCase="'checkout'"><admin-view></admin-view>></div>
-      <div *ngSwitchCase="'register'"><register-view></register-view></div>
-      <div *ngSwitchDefault><generic-view></generic-view></div> 
+      <div *ngSwitchCase="'events'"><events-view [pageData]="pageData"></events-view></div>
+      <div *ngSwitchCase="'contact'"><contact-view [pageData]="pageData"></contact-view></div>
+
+      <div *ngSwitchCase="'admin'"><admin-view [pageData]="pageData"></admin-view></div>
+      <div *ngSwitchCase="'checkout'"><admin-view [pageData]="pageData"></admin-view>></div>
+      <div *ngSwitchCase="'register'"><register-view [pageData]="pageData"></register-view></div>
+      <div *ngSwitchDefault><generic-view [pageData]="pageData"></generic-view></div> 
     </div>`,
   styleUrls: ['./default-view.component.css']
 })

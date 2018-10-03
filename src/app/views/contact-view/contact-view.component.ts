@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-contact-view',
+  selector: 'contact-view',
   template: `<div [dynamiccontact]="pageData"></div>`,
   styleUrls: ['./contact-view.component.css']
 })
