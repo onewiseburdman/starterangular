@@ -37,7 +37,7 @@ export class DynamicComponentDirective implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngOnInit() {
-    
+
   }
 
   ngOnDestroy() {
