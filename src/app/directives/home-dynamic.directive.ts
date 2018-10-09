@@ -54,9 +54,8 @@ export class HomeDynamicDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   loadComponent(data: any) {
-    const components: Array<any> = data[0][0].templates[0].components;
-    const orgdata = data[0][0];
-    const navdata = data[1];
+    const components: Array<any> = data[0].templates[0].components;
+    const orgdata = data[0];
     const filtered = from(components).pipe(
       filter(component => component.published === true)
     );
@@ -65,9 +64,6 @@ export class HomeDynamicDirective implements OnInit, OnDestroy, AfterViewInit {
       const componentFactory = this.factory.resolveComponentFactory(this.getComponentByAlias(component.name));
       const componentRef = this.elRef.createComponent(componentFactory);
       (<any>componentRef.instance).data = orgdata;
-      if (navdata) {
-        (<any>componentRef.instance).navdata = navdata;
-      }
     });
 
     // this.elRef.clear();

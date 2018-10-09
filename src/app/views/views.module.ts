@@ -32,6 +32,7 @@ import { ListViewComponent } from './list-view/list-view.component';
 import { ItemViewComponent } from './item-view/item-view.component';
 import { GenericViewComponent } from './generic-view/generic-view.component';
 
+import { GeolocationDirective } from './view-elements/geolocation.directive';
 //ui
 
 
@@ -72,7 +73,7 @@ import { GenericViewComponent } from './generic-view/generic-view.component';
     templateComponent,
     TypewriterheaderComponent,
     AdminFooterComponent,
-    
+    GeolocationDirective
   ],
   entryComponents: [ 
     csslinkComponent, 

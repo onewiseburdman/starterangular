@@ -1,4 +1,7 @@
-<h1>Hello there {{navdata[3]?.long_name}} !</h1>
+<div geolocate (data)="handleData($event)">
+    <h1>Hello there {{navdata[3]?.long_name}}!</h1>
+    {{navdata | json}}
+</div>
 
 <!-- <navicons [icons]="data?.social"></navicons>      -->
  

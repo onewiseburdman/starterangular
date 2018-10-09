@@ -11,7 +11,7 @@ export class GeoService {
 
   constructor() { }
 
-  getLocation() : Observable<any> {
+  getLocation(): Observable<any> {
     
     if (navigator.geolocation) {
       const res = new BehaviorSubject<any>([]);

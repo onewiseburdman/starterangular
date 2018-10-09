@@ -16,7 +16,7 @@ import { Observable, combineLatest } from 'rxjs';
       <div *ngSwitchCase="'admin'"><admin-view [pageData]="pageData"></admin-view></div>
       <div *ngSwitchCase="'checkout'"><admin-view [pageData]="pageData"></admin-view>></div>
       <div *ngSwitchCase="'register'"><register-view [pageData]="pageData"></register-view></div>
-      <div *ngSwitchDefault><generic-view [pageData]="pageData"></generic-view></div> 
+      <div *ngSwitchDefault><generic-view [pageData]="pageData"></generic-view></div>
     </div>`,
   styleUrls: ['./default-view.component.css']
 })
@@ -41,7 +41,7 @@ export class DefaultViewComponent implements OnInit {
       this.route2$ = params['grandchild'];
     });
 
-    this.pageData = combineLatest(this.content.loadContent(), this.geo.getLocation());
+    this.pageData = this.content.loadContent();
   }
   ngOnInit() { }
 

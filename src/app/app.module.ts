@@ -15,6 +15,7 @@ import { AngularFireFunctionsModule } from 'angularfire2/functions';
 import { viewsModule } from './views/views.module';
 import { environment } from '../environments/environment';
 
+
 @NgModule({
   declarations: [
     AppComponent
