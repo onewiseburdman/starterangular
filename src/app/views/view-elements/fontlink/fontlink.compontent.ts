@@ -2,12 +2,14 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'fontlink',
-  template: `<ng-container *ngFor="let font of fonts">
-  <link rel="stylesheet" [attr.url]="font.fontlink">
-</ng-container> `
+  template: `<ng-container *ngFor="let font of pageData?.fonts">
+  <link rel="stylesheet" [href]="font.fontlink | sanitize">
+</ng-container>`,
+
 })
 export class fontlinkComponent implements OnInit {
-  @Input() fonts: string;
+  fontlink;
+  @Input() pageData: any;
     
     ngOnInit() {
 

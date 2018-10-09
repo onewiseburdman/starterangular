@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AdminFooterComponent } from './view-elements/admin-footer/admin-footer.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { backgroundimageComponent} from './view-elements/backgroundimage/backgroundimage.component';
 import { backgroundsolidComponent } from './view-elements/backgroundsolid/backgroundsolid.component';
@@ -46,6 +47,7 @@ import { GenericViewComponent } from './generic-view/generic-view.component';
   ],
   declarations: [
     AdminViewComponent,
+    AdminFooterComponent,
     backgroundimageComponent,
     backgroundsolidComponent,
     csslinkComponent,
@@ -69,6 +71,7 @@ import { GenericViewComponent } from './generic-view/generic-view.component';
     SanitizerPipe,
     templateComponent,
     TypewriterheaderComponent,
+    AdminFooterComponent,
     
   ],
   entryComponents: [ 

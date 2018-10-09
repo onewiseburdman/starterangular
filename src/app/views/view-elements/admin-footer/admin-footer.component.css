@@ -1,0 +1,28 @@
+.gplus{
+
+  content: url('https://icongr.am/material/google-maps.svg?color=ff0000');
+  height: 20px;
+  
+}
+.gplus:hover {
+  
+  content: url('https://icongr.am/material/google-maps.svg?color=008000');
+}
+.font{
+  font-family: 'Lato', sans-serif;
+  font: url("https://fonts.googleapis.com/css?family=Lato:400,900")
+}
+:root {
+  --color-primary: #1a9f60;
+  --color-lightGrey: #d2d6dd;
+  --color-grey: #7e818b;
+  --color-darkGrey: #3f4144;
+  --color-error: #d43939;
+  --color-success: #28bd14;
+  --grid-maxWidth: 120rem;
+  --grid-gutter: 2rem;
+  --font-size: 1.6rem;
+  --font-family: 'Lato', sans-serif;
+  --font: url("https://fonts.googleapis.com/css?family=Lato:400,900")
+
+}
