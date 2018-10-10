@@ -13,7 +13,6 @@ export class GeoService {
   constructor() { }
 
   getLocation(): Observable<any> {
-    
     if (navigator.geolocation) {
       const res = new BehaviorSubject<any>([]);
       navigator.geolocation.getCurrentPosition(
@@ -41,7 +40,7 @@ export class GeoService {
           res.next({ error: error.message });
         }
       );
-      
+
       return res.asObservable().pipe(delay(2000));
     }
   }
