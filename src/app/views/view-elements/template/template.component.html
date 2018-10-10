@@ -1,6 +1,6 @@
 <div geolocate (data)="handleData($event)">
-    <h1>Hello there {{navdata[3]?.long_name}}!</h1>
-    {{navdata | json}}
+    <h1 *ngIf="navdata?.length > 0">Hello there {{navdata[0]?.long_name}}!</h1>
+    <!-- {{navdata | json}} -->
 </div>
 
 <!-- <navicons [icons]="data?.social"></navicons>      -->

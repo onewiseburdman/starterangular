@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { of, Observable, BehaviorSubject } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
-import { google } from '@google/maps'
+import { google } from '@google/maps';
 declare const google: any;
 
 @Injectable({
@@ -40,8 +41,8 @@ export class GeoService {
           res.next({ error: error.message });
         }
       );
-
-      return res.asObservable();
+      
+      return res.asObservable().pipe(delay(2000));
     }
   }
 
